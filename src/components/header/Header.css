@@ -1,0 +1,120 @@
+.site-header {
+  padding: 15px 0px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: white;
+}
+.site-header__navigation {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: space-between;
+}
+.site-header__navigation-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.site-header__logo img {
+  width: 150px;
+}
+.site-header__menu-button {
+  border: none;
+  font-size: 22px;
+  background-color: transparent;
+  display: none;
+  cursor: pointer;
+}
+.site-header__navigation-item {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.6px;
+  text-align: left;
+  color: #000000;
+  cursor: pointer;
+}
+.site-header__icons {
+  display: flex;
+  gap: 20px;
+}
+.site-header__icons svg {
+  font-size: 18px;
+}
+.site-header__search {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 2px 10px;
+  width: 39%;
+}
+.site-header__search-input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 8px 10px;
+  width: 100%;
+}
+.site-header__search-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+.site-header__search.open .site-header__search-input {
+  display: block;
+}
+.site-header__search.open .site-header__search-icon {
+  display: block;
+}
+@media (max-width: 565px) {
+  .site-header__search {
+    width: auto;
+    background-color: transparent;
+    padding: 0;
+  }
+  .site-header__search-input {
+    display: none;
+  }
+  .site-header__search-icon {
+    display: block;
+  }
+}
+@media (max-width: 880px) {
+  .site-header__navigation-links {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    background-color: white;
+    box-shadow: 1px 1px 10px rgba(170, 170, 170, 0.2666666667);
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.7s;
+  }
+  .site-header__menu-button {
+    display: block;
+  }
+  .site-header__close-button {
+    display: flex;
+  }
+  .site-header__navigation-show {
+    left: 0;
+  }
+}
+@media (max-width: 340px) {
+  .site-header__logo img {
+    width: 120px;
+  }
+}
+/*# sourceMappingURL=Header.css.map */
