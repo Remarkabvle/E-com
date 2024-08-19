@@ -9,8 +9,8 @@ import {
   FaCcPaypal,
   FaApplePay,
   FaGooglePay,
-} from "react-icons/fa"; // Importing React Icons
-import { HiOutlineMail } from "react-icons/hi"; // Importing the mail icon
+} from "react-icons/fa"; 
+import { HiOutlineMail } from "react-icons/hi";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -30,13 +30,12 @@ const Footer = () => {
           </form>
         </div>
 
-        {/* Main Content */}
         <div className="footer-section-content">
           <div className="footer-section-content-left">
             <h4>Shop.co</h4>
             <p className="footer-section-description">
-              We have clothes that suit your style and which you're proud to
-              wear. From women to men.
+              We have clothes that suit your style and which you're proud to wear. 
+              From women to men.
             </p>
             <div className="footer-section-social-icons">
               <div className="footer-section-social-icon">
