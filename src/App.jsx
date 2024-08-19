@@ -4,7 +4,7 @@ import Home from './pages/home/Home';
 import Wishlist from './pages/wishlist/Wishlist';
 // import ProductDetail from './pages/productDetail/ProductDetail'; \
 import SiteHeader from './components/header/Header';
-// import Footer from './components/footer/Footer';
+import Footer from './components/footer/Footer';
 import { WishlistProvider } from './context/WishlistContext';
 import ProductDetail from './components/product/ProductDetail';
 
@@ -18,7 +18,7 @@ function App() {
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/product/:id" element={<ProductDetail/>} /> 
         </Routes>
-        {/* <Footer/> */}
+        <Footer/>
       </Router>
     </WishlistProvider>
   );
