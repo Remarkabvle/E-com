@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import { FaHeart as HeartOutline, FaHeart as HeartFilled, FaShoppingCart } from "react-icons/fa";
 import "./Product.scss";
+import { WishlistContext } from "../../context/WishlistContext";
 
-const products = [
+export const products = [
   {
     id: 1,
     name: "T-shirt with Tape Details",
@@ -42,25 +45,125 @@ const products = [
     imageUrl:
       "https://shop.mango.com/assets/rcs/pics/static/T6/fotos/S/67050648_99.jpg?imwidth=2048&imdensity=1&ts=1698939178764",
   },
+  {
+    id: 5,
+    name: "Casual Hoodie",
+    price: 150,
+    rating: 4.0,
+    originalPrice: 180,
+    discount: "15%",
+    imageUrl:
+      "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  },
+  {
+    id: 6,
+    name: "Formal Shoes",
+    price: 200,
+    rating: 4.2,
+    originalPrice: 250,
+    discount: "20%",
+    imageUrl:
+      "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  },
+  {
+    id: 7,
+    name: "Classic Watch",
+    price: 300,
+    rating: 4.8,
+    originalPrice: 350,
+    discount: "10%",
+    imageUrl:
+      "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  },
+  {
+    id: 8,
+    name: "Leather Belt",
+    price: 80,
+    rating: 3.9,
+    originalPrice: 100,
+    discount: "20%",
+    imageUrl:
+      "https://files.ekmcdn.com/e7ea31/images/38mm-real-full-grain-mens-leather-belt-antique-brown-5866-1-p.jpg",
+  },
+  {
+    id: 9,
+    name: "Sunglasses",
+    price: 90,
+    rating: 4.3,
+    originalPrice: 110,
+    discount: "18%",
+    imageUrl:
+      "https://images.pexels.com/photos/371032/pexels-photo-371032.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  },
 ];
 
 const ProductList = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(4);
+  const { wishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
+
+  const isInWishlist = (productId) => {
+    return wishlist.some(item => item.id === productId);
+  };
+
+  const handleWishlistClick = (product) => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedProduct) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedProduct]);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prevCount) => prevCount + 4);
+  };
+
   return (
-    <div className="arrival-section" style={{marginTop: '100px'}}>
+    <div className="arrival-section" style={{ marginTop: "100px" }}>
       <div className="container">
         <h2 className="arrival-section__title">NEW ARRIVALS</h2>
         <div className="arrival-section__grid">
-          {products.map((product) => (
+          {products.slice(0, visibleCount).map((product) => (
             <div key={product.id} className="arrival-item">
               <div className="arrival-item__image-container">
-                <img
-                  src={product.imageUrl}
-                  alt={product.name}
-                  className="arrival-item__image"
-                />
+                <Link to={`/product/${product.id}`}> {/* Link to product detail page */}
+                  <img
+                    src={product.imageUrl}
+                    alt={product.name}
+                    className="arrival-item__image"
+                  />
+                </Link>
+                <div className="arrival-item__icons">
+                  {isInWishlist(product.id) ? (
+                    <HeartFilled
+                      className="arrival-item__icon active"
+                      onClick={() => handleWishlistClick(product)}
+                    />
+                  ) : (
+                    <HeartOutline
+                      className="arrival-item__icon"
+                      onClick={() => handleWishlistClick(product)}
+                    />
+                  )}
+                  <FaShoppingCart className="arrival-item__icon" />
+                </div>
               </div>
               <div className="arrival-item__details">
-                <h3 className="arrival-item__name">{product.name}</h3>
+                <h3 className="arrival-item__name">
+                  {product.name}
+                </h3>
                 <div className="arrival-item__rating-container">
                   <div className="arrival-item__stars">
                     {"⭐".repeat(Math.floor(product.rating))}
@@ -88,7 +191,14 @@ const ProductList = () => {
             </div>
           ))}
         </div>
-        <button className="arrival-section__view-all-button">View All</button>
+        {visibleCount < products.length && (
+          <button
+            className="arrival-section__load-more-button"
+            onClick={handleLoadMore}
+          >
+            Load More
+          </button>
+        )}
       </div>
     </div>
   );

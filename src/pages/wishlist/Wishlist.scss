@@ -1,0 +1,211 @@
+.wishlist-container {
+    // background: #f0f0f0; /* Light grey background for the whole container */
+    max-height: 100vh; /* Full viewport height */
+    padding: 20px;
+  }
+  
+  .wishlist-content {
+    max-width: 1200px; /* Center align content */
+    margin: 0 auto;
+  }
+  
+  .wishlist-title {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .wishlist-item {
+    // background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  
+  .wishlist-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .wishlist-item__image-container {
+    position: relative;
+  }
+  
+  .wishlist-item__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .wishlist-item__icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+  }
+  
+  .wishlist-item__icon {
+    font-size: 1.5rem;
+    // background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    // transition: background 0.3s;
+  }
+  
+  .wishlist-item__details {
+    padding: 15px;
+  }
+  
+  .wishlist-item__name {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .wishlist-item__rating-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .wishlist-item__stars {
+    color: #f39c12;
+    margin-right: 10px;
+  }
+  
+  .wishlist-item__rating {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .wishlist-item__price-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .wishlist-item__current-price {
+    font-size: 1.2rem;
+    color: #e74c3c;
+    margin-right: 10px;
+  }
+  
+  .wishlist-item__old-price {
+    font-size: 1rem;
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 10px;
+  }
+  
+  .wishlist-item__discount {
+    background: #e74c3c;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+  
+  .wishlist-empty {
+    text-align: center;
+    padding: 80px 20px;
+    // background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Gradient background for a modern look */
+    border-radius: 20px;
+    // box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .wishlist-empty::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background: url('https://images.pexels.com/photos/1029649/pexels-photo-1029649.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+    opacity: 0.3;
+    border-radius: 20px;
+    z-index: -1;
+  }
+  
+  .wishlist-empty h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wishlist-empty p {
+    font-size: 1.4rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  .wishlist-empty-image {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 15px;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .confirmation-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .confirmation-modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .confirmation-modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .confirmation-modal-button {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .confirmation-modal-button:hover {
+    background: #c0392b;
+  }
+  
+  .confirmation-modal-button:last-child {
+    background: #3498db;
+  }
+  
+  .confirmation-modal-button:last-child:hover {
+    background: #2980b9;
+  }
+  
