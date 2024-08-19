@@ -3,6 +3,13 @@
   border-radius: 40px;
   padding: 60px;
 }
+.dress-style-grid__title {
+  font-size: 3rem;
+  padding-top: 2%;
+  font-weight: 700;
+  margin-bottom: 40px;
+  line-height: 58px;
+}
 .dress-style-grid__cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -10,7 +17,7 @@
 }
 .dress-style-grid__card {
   background: #000;
-  color: #fff; /* Adjusted text color for visibility */
+  color: #fff;
   height: 290px;
   border-radius: 20px;
   overflow: hidden;

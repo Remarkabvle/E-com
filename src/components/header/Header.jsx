@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FaShoppingCart, FaUserCircle, FaBars, FaTimes, FaHeart } from "react-icons/fa";
+import {
+  FaShoppingCart,
+  FaUserCircle,
+  FaBars,
+  FaTimes,
+  FaHeart,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { WishlistContext } from "../../context/WishlistContext";
 import "./Header.scss";
@@ -36,7 +42,14 @@ const SiteHeader = () => {
       {topBarVisible && (
         <div className="top-bar">
           <div className="container bar-container">
-            <div className="top-bar__text" style={{ margin: '0 auto', display: 'flex', justifyContent: 'center' }}>
+            <div
+              className="top-bar__text"
+              style={{
+                margin: "0 auto",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               Sign up and get 20% off your first order.
               <a href="#signup">Sign Up Now</a>
             </div>
@@ -74,7 +87,16 @@ const SiteHeader = () => {
             />
           </div>
           <div className="site-header__icons">
-            <FaShoppingCart className="site-header__icon" />
+            <Link to="/cart">
+              <div className="site-header__cart-icon">
+                <FaShoppingCart className="site-header__icon" />
+                {/* {wishlist.length > 0 && (
+                  <span className="site-header__cart-count">
+                    {wishlist.length}
+                  </span>
+                )} */}
+              </div>
+            </Link>
             <Link to="/wishlist">
               <div className="site-header__wishlist-icon">
                 <FaHeart className="site-header__icon" />

@@ -1,0 +1,43 @@
+.notification {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 80px; /* Position slightly lower from the top */
+  left: 50%; /* Position from the center horizontally */
+  transform: translateX(-50%); /* Center the notification horizontally */
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+  width: 600px;
+  -webkit-animation: slideDown 0.5s ease-out;
+          animation: slideDown 0.5s ease-out; /* Optional: Slide-down animation */
+}
+.notification__image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+.notification__content {
+  flex-grow: 1;
+}
+.notification__button {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+.notification__close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+/*# sourceMappingURL=Notification.css.map */

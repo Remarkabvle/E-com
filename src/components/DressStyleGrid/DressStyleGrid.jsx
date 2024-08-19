@@ -11,8 +11,8 @@ const dressStyles = [
 
 const DressStyleGrid = () => {
     return (
-        <div className="dress-style-grid">
-            <h2 style={{ textAlign: 'center' }}>Browse by Dress Style</h2>
+        <div className="dress-style-grid container">
+            <h2 style={{ textAlign: 'center' }} className='dress-style-grid__title'>Browse by Dress Style</h2>
             <div className="dress-style-grid__cards">
                 {dressStyles.map((style, index) => (
                     <div
