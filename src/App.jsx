@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Wishlist from './pages/wishlist/Wishlist';
 import SiteHeader from './components/header/Header';
-import Footer from './components/footer/Footer';
+// import Footer from './components/footer/Footer';
 import { WishlistProvider } from './context/WishlistContext';
 import { CartProvider } from './context/CartContext';
 import ProductDetail from './components/product/ProductDetail';
 import Cart from './pages/cart/Cart';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/product/:id" element={<ProductDetail />} />
           </Routes>
-          <Footer />
+          <Footer/>
         </Router>
       </CartProvider>
     </WishlistProvider>
