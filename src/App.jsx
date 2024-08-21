@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Wishlist from './pages/wishlist/Wishlist';
-import Footer from './components/footer/Footer';
+// import Footer from './components/footer/Footer';
 import SiteHeader from './components/header/Header';
 import { WishlistProvider } from './context/WishlistContext';
 import { CartProvider } from './context/CartContext';
@@ -25,7 +25,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
       </CartProvider>
     </WishlistProvider>
