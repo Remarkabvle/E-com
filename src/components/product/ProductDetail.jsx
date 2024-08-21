@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { products } from './ProductList'; // Import products array from ProductList
-import './ProductDetail.css'; // Assuming you have a CSS file for styling
+import { products } from './ProductList'; // Import products array
+import './ProductDetail.scss'; // Assuming SCSS file for styling
+import { WishlistContext } from "../../context/WishlistContext";
+import { CartContext } from "../../context/CartContext";
+import Notification from '../Notification/Notification'; // Import Notification
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -10,6 +13,26 @@ const ProductDetail = () => {
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || 'default');
   const [selectedSize, setSelectedSize] = useState('Large'); // Default size
   const [quantity, setQuantity] = useState(1);
+  const [showNotification, setShowNotification] = useState(false); // Notification state
+
+  const { wishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext);
+  const { addToCart } = useContext(CartContext);
+
+  const isInWishlist = wishlist.some((item) => item.id === product?.id);
+
+  const handleAddToWishlist = () => {
+    if (isInWishlist) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
+
+  const handleAddToCart = () => {
+    addToCart({ ...product, selectedColor, selectedSize, quantity });
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 3000);
+  };
 
   if (!product) {
     return <h2>Product not found</h2>;
@@ -17,6 +40,7 @@ const ProductDetail = () => {
 
   return (
     <div className="product-detail">
+      {/* Image Section */}
       <div className="product-detail__image-section">
         <div className="product-detail__thumbnails">
           {product.images?.map((image, index) => (
@@ -33,6 +57,8 @@ const ProductDetail = () => {
           <img src={selectedImage} alt={product.name} className="product-detail__image" />
         </div>
       </div>
+      
+      {/* Product Info Section */}
       <div className="product-detail__info">
         <h1 className="product-detail__name">{product.name}</h1>
         <div className="product-detail__rating">
@@ -49,9 +75,9 @@ const ProductDetail = () => {
             <span>${product.price}</span>
           )}
         </p>
-        <p className="product-detail__description">
-          {product.description}
-        </p>
+        <p className="product-detail__description">{product.description}</p>
+        
+        {/* Product Options */}
         <div className="product-detail__options">
           {product.colors && (
             <div className="product-detail__colors">
@@ -79,15 +105,29 @@ const ProductDetail = () => {
             ))}
           </div>
         </div>
+        
+        {/* Quantity Selector */}
         <div className="product-detail__quantity">
           <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>-</button>
           <span>{quantity}</span>
           <button onClick={() => setQuantity(quantity + 1)}>+</button>
         </div>
-        <button className="product-detail__add-to-cart">
-          Add to Cart
-        </button>
+        
+        {/* Add to Cart and Wishlist Buttons */}
+        <div className="product-detail__actions">
+          <button className="product-detail__add-to-cart" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+          <button className={`product-detail__wishlist ${isInWishlist ? 'active' : ''}`} onClick={handleAddToWishlist}>
+            {isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
+          </button>
+        </div>
       </div>
+
+      {/* Notification */}
+      {showNotification && (
+        <Notification product={product} onClose={() => setShowNotification(false)} />
+      )}
     </div>
   );
 };

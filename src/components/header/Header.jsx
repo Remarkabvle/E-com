@@ -107,7 +107,12 @@ const SiteHeader = () => {
                 )}
               </div>
             </Link>
+            <Link to="/login">
+              <div className="site-header__wishlist-icon">
+                {/* <FaHeart className="site-header__icon" /> */}
+              </div>
             <FaUserCircle className="site-header__icon" />
+            </Link>
             <button className="site-header__menu-button" onClick={toggleMenu}>
               <FaBars />
             </button>

@@ -8,6 +8,8 @@ import { WishlistProvider } from './context/WishlistContext';
 import { CartProvider } from './context/CartContext';
 import ProductDetail from './components/product/ProductDetail';
 import Cart from './pages/cart/Cart';
+import Login from './pages/login/Login';
+import Admin from './pages/admin/Admin'; // Import the Admin component
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/admin" element={<Admin />} /> {/* Add admin route */}
           </Routes>
           <Footer />
         </Router>

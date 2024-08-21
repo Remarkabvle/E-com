@@ -1,61 +1,122 @@
 .cart-page {
+    &__container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+  
     &__title {
-      margin-bottom: 20px;
-      font-size: 24px;
+      font-size: 2rem;
       font-weight: bold;
+      margin-bottom: 20px;
     }
   
     &__empty {
-      font-size: 18px;
-      color: #999;
+      font-size: 1.2rem;
+      color: #888;
+      text-align: center;
+      margin-top: 50px;
+    }
+  
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
   
     &__list {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
   
     &__item {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      justify-content: space-between;
+      padding: 15px;
+      border: 1px solid #e6e6e6;
+      border-radius: 10px;
+      background-color: #fff;
     }
   
     &__item-image {
       width: 80px;
       height: 80px;
-      margin-right: 20px;
       object-fit: cover;
       border-radius: 8px;
+      margin-right: 15px;
     }
   
     &__item-details {
       flex-grow: 1;
+      margin-right: 15px;
+  
+      & > p {
+        margin: 5px 0;
+      }
     }
   
     &__item-name {
-      font-size: 18px;
+      font-size: 1.2rem;
       font-weight: bold;
-      margin-bottom: 5px;
     }
   
+    &__item-size,
+    &__item-color,
     &__item-price {
-      font-size: 16px;
+      font-size: 1rem;
       color: #555;
     }
   
-    &__remove-button {
-      background: #ff4d4f;
-      color: white;
+    &__item-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    &__quantity-button {
+      background-color: #f0f0f0;
       border: none;
-      padding: 8px 12px;
-      border-radius: 4px;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      
+      font-size: 1rem;
+      color: #333;
+  
       &:hover {
-        background: #ff7875;
+        background-color: #e6e6e6;
+      }
+  
+      &--decrease {
+        margin-right: 5px;
+      }
+  
+      &--increase {
+        margin-left: 5px;
+      }
+    }
+  
+    &__quantity {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    &__remove-button {
+      background-color: transparent;
+      border: none;
+      color: #ff4d4f;
+      font-size: 1.2rem;
+      cursor: pointer;
+  
+      &:hover {
+        color: #d9363e;
       }
     }
   }
-  
   
