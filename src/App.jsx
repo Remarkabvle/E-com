@@ -25,8 +25,8 @@ function App() {
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/admin" element={<Admin />} /> {/* Add admin route */}
           </Routes>
-          <Footer />
         </Router>
+          <Footer />
       </CartProvider>
     </WishlistProvider>
   );
